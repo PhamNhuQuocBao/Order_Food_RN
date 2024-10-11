@@ -20,7 +20,7 @@ const Splash = () => {
           Whether you're craving pizza, sushi, or something in between, we have
           got your back.
         </Text>
-        <Button title="Get Started" onPress={() => router.push("/home")} />
+        <Button title="Get Started" onPress={() => router.push("/(tabs)")} />
       </View>
     </SafeAreaView>
   );

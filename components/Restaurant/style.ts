@@ -5,20 +5,21 @@ export const styleRestaurant = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: "column",
-    gap: 16,
+    gap: 8,
+    marginBottom: 24,
   },
   image: {
     width: "100%",
-    height: 217,
+    height: 170,
     borderRadius: 15,
   },
   name: {
     fontWeight: "bold",
-    fontSize: 20,
+    fontSize: 18,
   },
   footer: {
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
-  }
+  },
 });

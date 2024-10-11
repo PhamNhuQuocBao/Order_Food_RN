@@ -17,12 +17,6 @@ const Restaurant: React.FC<Props> = ({ data, onPress }) => {
         <Image style={styleRestaurant.image} src={image} />
         <View style={styleRestaurant.footer}>
           <Text style={styleRestaurant.name}>{name}</Text>
-          <View>
-            <StarRatingDisplay
-              rating={rating}
-              style={{ transform: [{ scale: 0.5 }] }}
-            />
-          </View>
         </View>
       </View>
     </TouchableOpacity>

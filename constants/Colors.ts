@@ -16,4 +16,10 @@ export const Colors = {
     color: "#FFA500",
     background: "#FFA500",
   },
+  gray: {
+    color: "#797D82",
+    background: "#797D82",
+    blur: "#797D8270",
+    disable: "#797D8220",
+  },
 };

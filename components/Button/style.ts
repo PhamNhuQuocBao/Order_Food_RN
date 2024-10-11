@@ -6,7 +6,7 @@ export const styleButton = StyleSheet.create({
     backgroundColor: Colors.primary.background,
     padding: 16,
     marginTop: "auto",
-    width: 300,
+    width: "100%",
     borderRadius: 8,
   },
   text: {
