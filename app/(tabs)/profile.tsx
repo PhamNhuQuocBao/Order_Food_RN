@@ -1,11 +1,20 @@
 import { View, Text, Image, Pressable } from "react-native";
-import React from "react";
+import React, { useCallback } from "react";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Colors } from "@/constants/Colors";
 import AntDesign from "@expo/vector-icons/AntDesign";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { useRouter } from "expo-router";
 
 const Profile = () => {
+  const router = useRouter();
+
+  const onLogout = useCallback(async () => {
+    await AsyncStorage.removeItem("user");
+    router.navigate("/auth");
+  }, []);
+
   return (
     <SafeAreaView style={{ position: "relative" }}>
       <Text
@@ -124,6 +133,7 @@ const Profile = () => {
           top: 40,
           right: 20,
         }}
+        onPress={onLogout}
       >
         <AntDesign name="logout" size={16} color="black" />
       </Pressable>

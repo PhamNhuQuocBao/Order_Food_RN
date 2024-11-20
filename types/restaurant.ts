@@ -1,7 +1,13 @@
 export interface RestaurantResponse {
-  id: string | number;
-  documentId: string;
+  _id: string;
+  __v: number;
   name: string;
+  phone: string;
+  address: {
+    street: string;
+    city: string;
+  };
+  ownerId: string;
   rating: number;
   image: string;
 }

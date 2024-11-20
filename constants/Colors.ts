@@ -4,6 +4,7 @@
  */
 
 export const Colors = {
+  light: "#A1CEDC",
   default: {
     color: "#fff",
     background: "#fff",

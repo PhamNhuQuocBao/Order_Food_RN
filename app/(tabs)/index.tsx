@@ -6,15 +6,37 @@ import {
   TouchableOpacity,
   TextInput,
   Button,
+  Alert,
 } from "react-native";
-import React from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { styleHome } from "@/stylesheets/home";
 import Restaurant from "@/components/Restaurant";
 import { RESTAURANTS } from "@/constants/mock";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
+import { useRouter } from "expo-router";
+import { getRestaurants } from "@/services/restaurant";
+import { RestaurantResponse } from "@/types/restaurant";
 
 const Home = () => {
+  const [restaurants, setRestaurants] = useState<RestaurantResponse[]>([]);
+  const router = useRouter();
+
+  const fetch = useCallback(async () => {
+    const res = await getRestaurants();
+
+    if (res?.status === 200) {
+      setRestaurants(res.data);
+      return;
+    }
+
+    Alert.alert("Error", "Get data failed!");
+  }, []);
+
+  useEffect(() => {
+    fetch();
+  }, []);
+
   return (
     <SafeAreaView style={styleHome.container}>
       <View style={styleHome.header}>
@@ -40,8 +62,19 @@ const Home = () => {
           </TouchableOpacity>
         </View>
         <View>
-          {RESTAURANTS.map((value) => (
-            <Restaurant data={value} key={value.documentId} />
+          {restaurants.map((value) => (
+            <Restaurant
+              data={value}
+              key={value._id}
+              onPress={() => {
+                router.push({
+                  pathname: `/restaurant/[id]`,
+                  params: {
+                    id: value._id,
+                  },
+                });
+              }}
+            />
           ))}
         </View>
       </ScrollView>

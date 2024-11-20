@@ -8,9 +8,11 @@ import FontAwesome from "@expo/vector-icons/FontAwesome";
 
 interface Props {
   data: ProductStack;
+  quantity: number;
+  totalPrice: number;
 }
 
-const StackBag: React.FC<Props> = ({ data }) => {
+const StackBag: React.FC<Props> = ({ data, quantity, totalPrice }) => {
   return (
     <View style={StackBagStyle.container}>
       <Image source={{ uri: data.image }} width={80} height={80} />
@@ -25,7 +27,7 @@ const StackBag: React.FC<Props> = ({ data }) => {
           {data.category}
         </Text>
         <Text style={{ fontSize: 16, color: Colors.primary.color }}>
-          {`${data.price}$`}
+          {`${totalPrice}$`}
         </Text>
       </View>
       <View
@@ -47,7 +49,7 @@ const StackBag: React.FC<Props> = ({ data }) => {
           >
             <Entypo name="minus" size={20} color="black" />
           </Pressable>
-          <Text style={{ fontWeight: "bold" }}>{data.quantity}</Text>
+          <Text style={{ fontWeight: "bold" }}>{quantity}</Text>
           <Pressable
             disabled
             style={{
